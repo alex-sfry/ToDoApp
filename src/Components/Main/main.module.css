@@ -1,0 +1,25 @@
+.main {
+	background-color: #FBFBFB;
+	color: #313131;
+	min-height: 100%;
+}
+
+.container {
+	max-width: 1280px;
+	margin: 0 auto;
+	padding: 20px;
+}
+
+h1 {
+	font-size: 32px;
+	padding-bottom: 20px;
+}
+
+.button {
+	width: 100px;
+	height: 30px;
+	background-color: transparent;
+	border: 2px solid #313131;
+	border-radius: 5px;
+	font-size: 18px;
+}
