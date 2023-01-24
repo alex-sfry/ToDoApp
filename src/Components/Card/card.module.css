@@ -4,9 +4,10 @@
 	padding-bottom: 10px;
 }
 
-.card .date {
+.card > .date {
 	font-style: italic;
 	color: green;
 	font-weight: 600;
+	padding-left: 10px;
 }
 

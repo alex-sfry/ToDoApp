@@ -16,7 +16,7 @@ class Card extends React.Component {
 						})
 					}
 				</ul>
-				<span className={css.date}>Adden on: {todo.time}</span>
+				<span className={css.date}>Added on: {todo.time}</span>
 			</div>
 		)
 	}
