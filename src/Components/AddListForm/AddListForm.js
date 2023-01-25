@@ -1,6 +1,7 @@
 import React from 'react';
 import css from './addlistform.module.css';
 import nextId from 'react-id-generator';
+import DynamicTextInputs from '../DynamicTextInputs'
 
 class AddListForm extends React.Component {
 	constructor(props) {
@@ -23,7 +24,7 @@ class AddListForm extends React.Component {
 	handleSubmit = (e) => {
 		e.preventDefault();
 		const { addTask } = this.props;
-		const taskContent = [...document.querySelectorAll('form > div > input')].map((item) => {
+		const taskContent = [...document.querySelectorAll(`.${css.form} > div > input`)].map(item => {
 			return {
 				id: nextId(),
 				content: item.value,
@@ -46,21 +47,13 @@ class AddListForm extends React.Component {
 
 	render() {
 		const { tasksQty } = this.state
+
 		return (
-			<form className={css.form} onSubmit={this.handleSubmit} >
+			<form className={css.form} onSubmit={this.handleSubmit}>
 				<label htmlFor='cardTitle'>Card title</label>
 				<input id='cardTitle' type='text'></input>
 				<h3>Tasks:</h3>
-				{
-					tasksQty.map((item, index) => {
-						return (
-							<div key={index} className={css.tasks}>
-								<input className={css.input_task} type='text'></input>
-								<button className={css.add_input} onClick={this.handleClick}>+</button>
-							</div>
-						)
-					})
-				}
+				<DynamicTextInputs tasksQty={tasksQty} handleClick={this.handleClick}/>
 				<button type='submit' className={css.button}>Add</button>
 			</form>
 		)

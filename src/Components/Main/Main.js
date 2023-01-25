@@ -10,7 +10,8 @@ class Main extends React.Component {
 
 		this.state = {
 			isFormOpen: false,
-			todos: todos
+			todos: todos,
+			isFormSubmited: false
 		}
 	}
 
@@ -30,7 +31,8 @@ class Main extends React.Component {
 		}
 
 		this.setState({
-			todos: [...this.state.todos, newTask]
+			todos: [...this.state.todos, newTask],
+			isFormSubmited: !this.state.isFormSubmited
 		}
 		)
 	}

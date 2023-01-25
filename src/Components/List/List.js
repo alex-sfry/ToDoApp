@@ -5,7 +5,7 @@ import nextId from 'react-id-generator';
 
 class List extends React.Component {
 	render() {
-		const { todos, loggedUser } = this.props;
+		const { todos, loggedUser, completed } = this.props;
 		const userTodos = todos.filter(task => task.userId === loggedUser);
 
 		return (
@@ -13,7 +13,7 @@ class List extends React.Component {
 				{
 					userTodos.map(todo => {
 						return (
-							<Card key={nextId()} todo={todo} />
+							<Card key={nextId()} todo={todo} completed={completed}/>
 						)
 					})
 				}

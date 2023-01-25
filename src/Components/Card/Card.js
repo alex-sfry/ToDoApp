@@ -4,7 +4,7 @@ import ListItem from '../ListItem';
 
 class Card extends React.Component {
 	render() {
-		const { todo } = this.props;
+		const { todo, completed } = this.props;
 
 		return (
 			<div className={css.card}>
@@ -12,7 +12,7 @@ class Card extends React.Component {
 				<ul>
 					{
 						todo.items.map(item => {
-							return (<ListItem key={item.id} item={item} />)
+							return (<ListItem key={item.id} item={item} completed={completed}/>)
 						})
 					}
 				</ul>
