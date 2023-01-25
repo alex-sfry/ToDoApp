@@ -11,8 +11,8 @@ class DynamicTextInputs extends React.Component {
 					tasksQty.map((item, index) => {
 						return (
 							<div key={index} className={css.tasks}>
-								<input className={css.input_task} type='text'></input>
-								<button className={css.add_input} onClick={handleClick}>+</button>
+								<input type='text'></input>
+								<button className={css.btnAddInput} onClick={handleClick}>+</button>
 							</div>
 						)
 					})

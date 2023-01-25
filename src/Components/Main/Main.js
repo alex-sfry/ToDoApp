@@ -10,14 +10,15 @@ class Main extends React.Component {
 
 		this.state = {
 			isFormOpen: false,
-			todos: todos,
-			isFormSubmited: false
+			todos: todos
 		}
 	}
 
 	handleClick = () => {
+
 		this.setState(
 			{ isFormOpen: !this.state.isFormOpen }
+
 		)
 	}
 
@@ -29,10 +30,10 @@ class Main extends React.Component {
 			items: data.items,
 			time: date.toLocaleString()
 		}
-
+		const { todos } = this.state
+		
 		this.setState({
-			todos: [...this.state.todos, newTask],
-			isFormSubmited: !this.state.isFormSubmited
+			todos: [...todos, newTask]
 		}
 		)
 	}

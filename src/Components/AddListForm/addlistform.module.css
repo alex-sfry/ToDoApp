@@ -10,10 +10,6 @@
 	margin: 20px 0;
 }
 
-.form label {
-	font-size: 18px;
-}
-
 .button {
 	width: 100px;
 	height: 24px;
@@ -29,4 +25,5 @@
 	outline: 0;
 	border: 1px solid #313131;
 	border-radius: 5px;
+	width: 100%;
 }

@@ -23,6 +23,20 @@ class AddListForm extends React.Component {
 
 	handleSubmit = (e) => {
 		e.preventDefault();
+		
+		const isValidated = () => {
+			const inputContent = [...document.querySelectorAll(`.${css.form} > div > input`)].map(item => item.value)
+			const nonEmptyValues = inputContent.filter((item) => item !== '')
+			if (document.querySelector('#cardTitle').value !== '' && nonEmptyValues.length > 0) {
+				return true
+			} else return false
+		}
+
+		if (!isValidated()) {
+			alert('You must fill at least Title and 1 task field')
+			return
+		}
+
 		const { addTask } = this.props;
 		const taskContent = [...document.querySelectorAll(`.${css.form} > div > input`)].map(item => {
 			return {
@@ -50,10 +64,10 @@ class AddListForm extends React.Component {
 
 		return (
 			<form className={css.form} onSubmit={this.handleSubmit}>
-				<label htmlFor='cardTitle'>Card title</label>
+				<h3>Card title</h3>
 				<input id='cardTitle' type='text'></input>
 				<h3>Tasks:</h3>
-				<DynamicTextInputs tasksQty={tasksQty} handleClick={this.handleClick}/>
+				<DynamicTextInputs tasksQty={tasksQty} handleClick={this.handleClick} />
 				<button type='submit' className={css.button}>Add</button>
 			</form>
 		)

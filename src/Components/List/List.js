@@ -1,22 +1,19 @@
 import React from 'react';
 import css from './list.module.css';
 import Card from '../Card';
-import nextId from 'react-id-generator';
 
 class List extends React.Component {
 	render() {
-		const { todos, loggedUser, completed } = this.props;
+		const { todos, loggedUser } = this.props;
 		const userTodos = todos.filter(task => task.userId === loggedUser);
 
 		return (
 			<div className={css.cards}>
-				{
-					userTodos.map(todo => {
-						return (
-							<Card key={nextId()} todo={todo} completed={completed}/>
-						)
-					})
-				}
+				{userTodos.map((todo, index) => {
+					return (
+						<Card key={index} todo={todo} />
+					)
+				})}
 			</div>
 		)
 	}

@@ -12,10 +12,8 @@ class ListItem extends React.Component {
 	}
 
 	handleChange = () => {
-		const { item } = this.props;
-		item.completed = !item.completed
 		this.setState(
-			{ checked: item.completed }
+			{ checked: !this.state.checked }
 		)
 	}
 
@@ -26,8 +24,8 @@ class ListItem extends React.Component {
 		return (
 			<>
 				<li className={css.li}>
-					<input name={item.id} type='checkbox' defaultChecked={checked} onChange={this.handleChange}></input>
-					<label>{checked ? (<del>{item.content}</del>) : (<span>{item.content}</span>)}</label>
+					<input type='checkbox' defaultChecked={checked} onChange={this.handleChange}></input>
+					<span>{checked ? (<del>{item.content}</del>) : (<span>{item.content}</span>)}</span>
 				</li>
 			</>
 		)
