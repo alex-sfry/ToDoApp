@@ -9,9 +9,9 @@ class List extends React.Component {
 
 		return (
 			<div className={css.cards}>
-				{userTodos.map((todo, index) => {
+				{userTodos.map((todo) => {
 					return (
-						<Card key={index} todo={todo} />
+						<Card key={todo.title} todo={todo} />
 					)
 				})}
 			</div>

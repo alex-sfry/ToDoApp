@@ -10,8 +10,8 @@ class Card extends React.Component {
 			<div className={css.card}>
 				<h2>{todo.title}</h2>
 				<ul>
-					{todo.items.map((item, index) => {
-						return (<ListItem key={index} item={item} />)
+					{todo.items.map((item) => {
+						return (<ListItem key={item.id} item={item} />)
 					})}
 				</ul>
 				<span className={css.date}>Added on: {todo.time}</span>
