@@ -5,26 +5,3 @@
 	flex-wrap:wrap;
 	height: 100%;
 }
-
-.card {
-	width: 300px;
-	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-	padding-bottom: 10px;
-}
-
-.card > .date {
-	font-style: italic;
-	color: green;
-	font-weight: 600;
-	padding-left: 10px;
-}
-
-.li {
-	display: flex;
-	padding: 10px;
-	gap:10px
-}
-
-.li:last-child {
-	padding-bottom: 20px;
-}
