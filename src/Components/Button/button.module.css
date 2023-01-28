@@ -1,0 +1,31 @@
+.btnLogin, .btnTransparentM, .btnTransparentS {
+	background-color: transparent;
+	border-radius: 5px;
+	font-family: inherit;
+	color: inherit;
+}
+
+.btnTransparentM, .btnTransparentS {
+	height: 24px;
+	border: 2px solid #313131;	
+	font-weight: 600;
+}
+
+.btnLogin {
+	width: 120px;
+	height: 40px;	
+	border: 2px solid #FBFBFB;
+	font-size: 18px;
+}
+
+.btnTransparentM {
+	width: 100px;
+}
+
+.btnTransparentS {
+	width: 24px;	
+	font-size: 24px;
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+}

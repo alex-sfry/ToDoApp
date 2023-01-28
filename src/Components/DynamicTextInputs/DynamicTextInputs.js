@@ -1,5 +1,7 @@
 import React from 'react';
 import css from './dynamictextinputs.module.css';
+import Button from '../Button';
+import TextInput from '../TextInput';
 
 class DynamicTextInputs extends React.Component {
 	render() {
@@ -10,10 +12,12 @@ class DynamicTextInputs extends React.Component {
 				{
 					tasksQty.map((item, index) => {
 						return (
-							<div key={index} className={css.tasks}>
-								<input type='text'></input>
-								<button className={css.btnAddInput} onClick={handleClick}>+</button>
-							</div>
+							<ul key={index} className={css.tasks}>
+								<li>
+									<TextInput className={'textInput'} />
+									<Button type={'button'} className={'btnTransparentS'} onClick={handleClick} label={'+'} />
+								</li>
+							</ul>
 						)
 					})
 				}

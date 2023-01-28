@@ -7,20 +7,24 @@ class ListItem extends React.Component {
 		const { item } = this.props;
 
 		this.state = {
-			checked: item.completed
+			checked: item.completed,
+			modifiedTime: null,
 		}
 	}
 
 	handleChange = () => {
-		this.setState(
-			{ checked: !this.state.checked }
-		)
+		const date = new Date()
+		const { modifiedTask } = this.props;
+		this.setState({
+			checked: !this.state.checked,
+			modifiedTime: date.toLocaleString()
+		})
+		modifiedTask(date.toLocaleString())
 	}
 
 	render() {
 		const { item } = this.props;
 		const { checked } = this.state;
-
 		return (
 			<>
 				<li className={css.li}>

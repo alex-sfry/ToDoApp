@@ -2,12 +2,34 @@
 	width: 300px;
 	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 	padding-bottom: 10px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 }
 
-.card > .date {
-	font-style: italic;
-	color: green;
-	font-weight: 600;
+.cardTitle {
+	font-size: 22px;
+	background-color: #9297f7;
+	color: #FBFBFB;
 	padding-left: 10px;
 }
 
+.card > .status {
+	padding-top: 10px;
+	border-top: 1px solid #313131;
+}
+
+.card > .status > .dateAdded, .card > .status > .dateModified, .card  > .status > .progress {
+	font-style: italic;
+	font-weight: 600;
+	padding-left: 10px;
+	font-size: 14px;
+}
+
+.card > .status > .dateAdded, .card > .status > .dateModified {
+	color: green;
+}
+
+.card  > .status > .progress {
+	color: blueviolet;
+}

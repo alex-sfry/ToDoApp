@@ -1,20 +1,6 @@
-.tasks {
+.tasks, .tasks > li {
 	display: flex;
 	justify-content: space-between;
 	gap: 5px;
-}
-
-
-.btnAddInput {
-	width: 24px;
-	height: 24px;
-	border: 2px solid #313131;
-	border-radius: 5px;
-	font-weight: 600;
-	background-color: transparent;
-	font-size: 24px;
-	font-family: inherit;
-	display: inline-flex;
-	justify-content: center;
-	align-items: center;
+	width: 100%;
 }

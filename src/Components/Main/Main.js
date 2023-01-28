@@ -2,6 +2,7 @@ import React from 'react';
 import css from './main.module.css';
 import List from '../List';
 import AddListForm from '../AddListForm';
+import Button from '../Button';
 
 class Main extends React.Component {
 	constructor(props) {
@@ -10,7 +11,9 @@ class Main extends React.Component {
 
 		this.state = {
 			isFormOpen: false,
-			todos: todos
+			todos: todos,
+			modifiedTime: null,
+			title: ''
 		}
 	}
 
@@ -31,17 +34,15 @@ class Main extends React.Component {
 			time: date.toLocaleString()
 		}
 		const { todos } = this.state
-		
-		this.setState({
-			todos: [...todos, newTask]
-		}
-		)
+
+		this.setState({ todos: [...todos, newTask] })
 	}
 
 	render() {
 		const { loggedUser, users } = this.props;
 		const userName = loggedUser ? users.find(user => user.id === loggedUser).name : undefined;
 		const { isFormOpen, todos } = this.state;
+		const userTodos = todos.filter(task => task.userId === loggedUser);
 
 		return (
 			<>
@@ -51,10 +52,9 @@ class Main extends React.Component {
 							loggedUser ? (
 								<>
 									<h1>Welcome, {userName}</h1>
-									<button className={css.button} onClick={this.handleClick}>
-										{isFormOpen ? 'Close' : 'Add list'}</button>
-									{isFormOpen && <AddListForm addTask={this.addTask} />}
-									<List loggedUser={loggedUser} todos={todos} />
+									<Button type={'button'} className={'btnTransparentM'} onClick={this.handleClick} label={isFormOpen ? 'Close' : 'Add list'} />
+									{isFormOpen && <AddListForm userTodos={userTodos} addTask={this.addTask} />}
+									<List loggedUser={loggedUser} todos={todos} modifiedTime={this.modifiedTime} />
 								</>
 							) :
 								<>

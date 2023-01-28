@@ -12,7 +12,6 @@ class App extends React.Component {
 			<Main loggedUser={mock.activeUserId} users={mock.users} todos={mock.todos} />
 			<Footer />
 		</div>
-
 	}
 }
 

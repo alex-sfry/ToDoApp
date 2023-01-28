@@ -2,6 +2,8 @@ import React from 'react';
 import css from './addlistform.module.css';
 import nextId from 'react-id-generator';
 import DynamicTextInputs from '../DynamicTextInputs'
+import Button from '../Button';
+import TextInput from '../TextInput';
 
 class AddListForm extends React.Component {
 	constructor(props) {
@@ -23,22 +25,38 @@ class AddListForm extends React.Component {
 
 	handleSubmit = (e) => {
 		e.preventDefault();
-		
+		// validation for unique, non empty title and at least 1 input filled
 		const isValidated = () => {
-			const inputContent = [...document.querySelectorAll(`.${css.form} > div > input`)].map(item => item.value)
-			const nonEmptyValues = inputContent.filter((item) => item !== '')
-			if (document.querySelector('#cardTitle').value !== '' && nonEmptyValues.length > 0) {
-				return true
-			} else return false
+			const { userTodos } = this.props;
+			const titles = userTodos.map((todo) => todo.title.trim());
+			const newTitle = document.querySelector('#newTitle').value.trim();
+			const nonEmptyValues = [...document.querySelectorAll(`.${css.form} > ul > li > input`)].map(item => item.value).filter((item) => item !== '');
+			let unique = true;
+
+			titles.forEach((title) => {
+				if (title === newTitle) unique = false;
+			})
+
+			if (newTitle !== '' && nonEmptyValues.length > 0 && unique) {
+				return true;
+			}
+			if (!unique && nonEmptyValues.length === 0) {
+				alert('Title must be unique. You must fill at least 1 task field');
+				return false;
+			}
+			if (!unique) {
+				alert('Title must be unique.');
+				return false;
+			}
+			alert('You must fill at least Title and 1 task field');
+			return false;
 		}
 
-		if (!isValidated()) {
-			alert('You must fill at least Title and 1 task field')
-			return
-		}
-
-		const { addTask } = this.props;
-		const taskContent = [...document.querySelectorAll(`.${css.form} > div > input`)].map(item => {
+		if (!isValidated()) return;
+		//get non empty input values
+		const nonEmptyValues = [...document.querySelectorAll(`.${css.form} > ul > li > input`)].filter((item) => { return item.value !== '' })
+		//create object with task info in specific format
+		const taskContent = nonEmptyValues.map((item) => {
 			return {
 				id: nextId(),
 				content: item.value,
@@ -46,9 +64,10 @@ class AddListForm extends React.Component {
 			}
 		})
 
+		const { addTask } = this.props;
 		addTask(
 			{
-				title: document.querySelector('#cardTitle').value,
+				title: document.querySelector('#newTitle').value,
 				items: taskContent
 			}
 		)
@@ -60,15 +79,15 @@ class AddListForm extends React.Component {
 	}
 
 	render() {
-		const { tasksQty } = this.state
+		const { tasksQty } = this.state;
 
 		return (
 			<form className={css.form} onSubmit={this.handleSubmit}>
 				<h3>Card title</h3>
-				<input id='cardTitle' type='text'></input>
+				<TextInput id={'newTitle'} className={'textInput'} />
 				<h3>Tasks:</h3>
 				<DynamicTextInputs tasksQty={tasksQty} handleClick={this.handleClick} />
-				<button type='submit' className={css.button}>Add</button>
+				<Button type={'submit'} className={'btnTransparentM'} label={'Add'} />
 			</form>
 		)
 	}
