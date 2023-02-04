@@ -10,7 +10,6 @@
 	height: 24px;
 	border-color: #313131;	
 	font-weight: 600;
-	line-height: 1;
 }
 
 .btnLogin {
@@ -18,27 +17,27 @@
 	height: 40px;	
 	border-color: #FBFBFB;
 	font-size: 18px;
+	padding: 0px 8px 2px;
 }
 
 .btnTransparentM {
 	width: 100px;
+	padding: 0px 8px 2px;
+	font-size: 14px;
 }
 
 .btnTransparentS {
-	width: 24px;	
-	font-size: 24px;
-	display: inline-flex;
-	justify-content: center;
-	align-items: center;
+	width: 24px;
+	font-size: 20px;
+	line-height: 20px;
 }
 
 .btnDelete {
 	height: 28px;
 	width: 28px;
-	font-size: 22px;
+	font-size: 16px;
 	background-color: red;
-	line-height: 0.8;
-	padding-bottom: 4px;
 	font-family: inherit;
 	color: inherit;
+	text-transform: uppercase;
 }
