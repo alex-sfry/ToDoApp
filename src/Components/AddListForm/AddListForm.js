@@ -65,6 +65,7 @@ class AddListForm extends React.Component {
 		})
 
 		const { addTask } = this.props;
+		
 		addTask(
 			{
 				title: document.querySelector('#newTitle').value,

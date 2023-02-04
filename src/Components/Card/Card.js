@@ -1,6 +1,7 @@
 import React from 'react';
 import css from './card.module.css';
 import ListItem from '../ListItem';
+import Button from '../Button';
 import nextId from 'react-id-generator'; // for Id genration
 
 class Card extends React.Component {
@@ -27,6 +28,12 @@ class Card extends React.Component {
 		})
 	}
 
+	handleClick = (e) => {
+		e.preventDefault();
+		const { deleteTask, todo } = this.props;
+		deleteTask(todo);
+	}
+
 	render() {
 		const { todo } = this.props;
 		const { modifiedTime, cardId, completedQty, taskQty } = this.state;
@@ -34,7 +41,7 @@ class Card extends React.Component {
 		return (
 			<div id={cardId} className={css.card}>
 				<div>
-					<h2 className={css.cardTitle}>{todo.title}</h2>
+					<h2 className={css.cardTitle}>{todo.title}<Button type={'button'} className={'btnDelete'} onClick={this.handleClick} label={'x'} /></h2>				
 					<ul>
 						{todo.items.map((item) => {
 							return (<ListItem key={item.id} item={item} title={todo.title} modifiedTask={this.modifiedTask} />)
