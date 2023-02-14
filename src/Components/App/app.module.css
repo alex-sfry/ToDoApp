@@ -37,7 +37,7 @@ body {
 }
 
 .app {
-	height: calc(100vh - 192px);
+	height: calc(100vh - 160px);
 }
 
 button, a {
